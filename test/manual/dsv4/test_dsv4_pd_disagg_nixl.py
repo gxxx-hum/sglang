@@ -61,7 +61,7 @@ class TestDSV4FlashPDDisaggNIXL(PDDisaggregationServerBase):
             "deepep",
             "--deepep-config",
             DEEPEP_CONFIG,
-            "--cuda-graph-max-bs",
+            "--cuda-graph-max-bs-decode",
             "128",
             "--max-running-requests",
             "256",
@@ -103,7 +103,7 @@ class TestDSV4FlashPDDisaggNIXL(PDDisaggregationServerBase):
             "deepep",
             "--deepep-config",
             DEEPEP_CONFIG,
-            "--cuda-graph-max-bs",
+            "--cuda-graph-max-bs-decode",
             "128",
             "--max-running-requests",
             "256",
@@ -136,7 +136,7 @@ class TestDSV4FlashPDDisaggNIXL(PDDisaggregationServerBase):
             num_questions=200,
             max_new_tokens=512,
             parallel=64,
-            host=f"http://{self.base_host}",
+            host=self.base_host,
             port=int(self.lb_port),
         )
         metrics = run_gsm8k_eval(args)
